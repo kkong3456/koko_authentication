@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "836758077311",
+    "project_id": "koko-authenticaion",
+    "storage_bucket": "koko-authenticaion.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836758077311:android:e27903d8502072627c244a",
+        "android_client_info": {
+          "package_name": "com.example.koko_authentication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAOppLr3B3QO-Q-qplNgL9CI1aQXURPjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
