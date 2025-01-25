@@ -1,0 +1,11 @@
+EGL_emulation( 4484): app_time_stats: avg=500.61ms min=498.47ms max=502.03ms count=3
+I/flutter ( 4484): xxxx
+E/flutter ( 4484): [ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: [firebase_auth/channel-error] "dev.flutter.pigeon.firebase_auth_platform_interface.FirebaseAuthHostApi.signInWithEmailAndPassword".
+E/flutter ( 4484): #0      FirebaseAuthHostApi.signInWithEmailAndPassword (package:firebase_auth_platform_interface/src/pigeon/messages.pigeon.dart:1156:7)
+E/flutter ( 4484): <asynchronous suspension>
+E/flutter ( 4484): #1      MethodChannelFirebaseAuth.signInWithEmailAndPassword (package:firebase_auth_platform_interface/src/method_channel/method_channel_firebase_auth.dart:342:22)
+E/flutter ( 4484): <asynchronous suspension>
+E/flutter ( 4484): #2      FirebaseAuth.signInWithEmailAndPassword (package:firebase_auth/src/firebase_auth.dart:590:9)
+E/flutter ( 4484): <asynchronous suspension>
+E/flutter ( 4484): #3      LoginPage.signUserIn (package:koko_authentication/pages/login_page.dart:17:5)
+E/flutter ( 4484): <asynchronous suspension>
