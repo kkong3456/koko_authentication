@@ -15,8 +15,9 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   //text editing controllers
   final TextEditingController emailController = TextEditingController();
-
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   //sign user up method
   void signUserIn() async {
@@ -29,20 +30,23 @@ class _RegisterPageState extends State<RegisterPage> {
     );
     //try creating the user
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
-      );
-    } on FirebaseAuthException catch (e) {
-      print('e.code is ${e.code}');
-      if (e.code == 'invalid-email') {
-        showErrorMessage('Invalid Email');
-      } else if (e.code == 'invalid-credential') {
-        showErrorMessage('Invalid Password');
+      //check if password is confirmed
+      if (passwordController.text == confirmPasswordController.text) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text,
+          password: passwordController.text,
+        );
+      } else {
+        //show error message, passwords don't match
+        showErrorMessage('Passwords don\'t match');
       }
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      //pop the loading circle
+      Navigator.pop(context);
+      //show error message
+      showErrorMessage(e.code);
     }
-    //pop the loading circle
-    Navigator.pop(context);
   }
 
   //error message to user
@@ -104,24 +108,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 const SizedBox(height: 10),
                 MyTextField(
-                  controller: passwordController,
+                  controller: confirmPasswordController,
                   hintText: 'Confirm password',
                   obscureText: true,
                 ),
-                const SizedBox(height: 10),
-                //forgot password?
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        'Forgot Password?',
-                        style: TextStyle(color: Colors.grey[600]),
-                      ),
-                    ],
-                  ),
-                ),
+
                 const SizedBox(height: 20),
                 //sign in button
                 MyButton(
