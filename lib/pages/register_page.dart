@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:koko_authentication/components/my_button.dart';
 import 'package:koko_authentication/components/my_textfield.dart';
 import 'package:koko_authentication/components/square_tile.dart';
+import 'package:koko_authentication/services/auth_service.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -154,14 +155,16 @@ class _RegisterPageState extends State<RegisterPage> {
                 //google + apple sign in buttons
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     //google button
                     SquareTile(
+                      onTap: () => AuthService().signInWithGoogle(),
                       imagePath: 'lib/images/google.png',
                     ),
                     const SizedBox(width: 10),
                     //apple button
                     SquareTile(
+                      onTap: () {},
                       imagePath: 'lib/images/apple.png',
                     )
                   ],
